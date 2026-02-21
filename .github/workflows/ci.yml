@@ -1,0 +1,16 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+    paths: [ "**/*.md" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test suite
+        run: |
+          echo "Running tests..."
+          sleep 5 # Simulate running tests
+          exit 0
