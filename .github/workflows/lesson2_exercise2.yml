@@ -1,0 +1,30 @@
+name: "Lesson 2 - Exercise 2"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    outputs:
+      state: ${{ steps.sync_check.outputs.state }}
+    steps:
+      - name: Determine whether to run the job `test` or halt the workflow run
+        id: sync_check
+        run: |
+          if [ $((RANDOM % 2)) -eq 0 ]; then
+            echo "state=run" >> "${GITHUB_OUTPUT}"
+            echo "Running the the job `test`. . ."
+          else
+            echo "state=halt" >> "${GITHUB_OUTPUT}"
+            echo "Skipping the job `test`. . ."
+  test:
+    needs: sync
+    if: ${{ needs.sync.outputs.state == 'run' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test suite
+        run: |
+          echo "Running tests. . ."
+          sleep 5
+          exit 0
