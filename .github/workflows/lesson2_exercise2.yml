@@ -18,6 +18,7 @@ jobs:
           else
             echo "state=halt" >> "${GITHUB_OUTPUT}"
             echo "Skipping the job `test`. . ."
+          fi
   test:
     needs: sync
     if: ${{ needs.sync.outputs.state == 'run' }}
