@@ -7,10 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      RUN_ATTEMPT_NUMBER: ${{ github.run_attempt }}
     steps:
       - name: Prevent reruns
+        env:
+          RUN_ATTEMPT_NUMBER: ${{ github.run_attempt }}
         run: |
           # Exit if the run number is greater than the maximum number of attempts
           if [ $RUN_ATTEMPT_NUMBER -gt $MAXIMUM_ATTEMPTS ]; then
