@@ -17,6 +17,9 @@ jobs:
           if [ $RUN_ATTEMPT_NUMBER -gt $MAXIMUM_ATTEMPTS ]; then
             echo "Exiting because the run number is greater than the maximum number of attempts."
             exit 1
+          else
+            echo "Run number: $RUN_ATTEMPT_NUMBER"
+            exit 0
           fi
           # Add solution below this line
           # Learn more about context: https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
