@@ -3,10 +3,12 @@ on:
   push:
     branches: 
       - main
+      # Matches release branches: releases/1, releases/20260228, etc.
       - "releases/[0-9]"
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: ${{ contains(github.ref, 'release/') }}
+  # Cancel in-progress runs only for release branches.
+  cancel-in-progress: ${{ contains(github.ref, 'releases/') }}
 jobs:
   release:
     strategy:
