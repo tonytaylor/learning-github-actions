@@ -11,7 +11,7 @@ jobs:
       - name: Prevent reruns
         run: |
           # Exit if the run number is greater than the maximum number of attempts
-          if [ $RUN_ATTEMPT_NUMBER -gt $MAXIMUM_ATTEMPTS ]; then
+          if [ $RUN_ATTEMPT_NUMBER -gt $ENV_MAXIMUM_ATTEMPTS ]; then
             echo "Exiting because the run number is greater than the maximum number of attempts."
             exit 1
           fi
@@ -19,6 +19,7 @@ jobs:
           # Learn more about context: https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
           # Lern more about environment variables: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idenv
         env:
+          ENV_MAXIMUM_ATTEMPTS: ${{ vars.MAXIMUM_ATTEMPTS }}
           RUN_ATTEMPT_NUMBER: ${{ github.run_attempt }}
       - name: Run job
         run: |
