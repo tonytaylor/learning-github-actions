@@ -7,6 +7,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+          ENV_MAXIMUM_ATTEMPTS: ${{ vars.MAXIMUM_ATTEMPTS }}
+          RUN_ATTEMPT_NUMBER: ${{ github.run_attempt }}
     steps:
       - name: Prevent reruns
         run: |
@@ -18,9 +21,6 @@ jobs:
           # Add solution below this line
           # Learn more about context: https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
           # Lern more about environment variables: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idenv
-        env:
-          ENV_MAXIMUM_ATTEMPTS: ${{ vars.MAXIMUM_ATTEMPTS }}
-          RUN_ATTEMPT_NUMBER: ${{ github.run_attempt }}
       - name: Run job
         run: |
           echo "Running job"
