@@ -17,6 +17,3 @@ jobs:
         id: greeter
         with:
           actor: "Daffy Duck"
-    #id: greeting
-    #secrets:
-    #  token: ${{ secrets.GITHUB_TOKEN }}
