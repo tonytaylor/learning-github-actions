@@ -1,0 +1,12 @@
+name: "Lesson 3: Exercise One"
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    uses: tonytaylor/learning-github-composite-actions@main
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
