@@ -4,9 +4,17 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    
 
 jobs:
   test:
-    uses: tonytaylor/learning-github-composite-actions@main
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    name: Greet
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: tonytaylor/learning-github-composite-actions@main
+        id: greeter
+    #id: greeting
+    #secrets:
+    #  token: ${{ secrets.GITHUB_TOKEN }}
