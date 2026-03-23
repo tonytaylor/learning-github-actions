@@ -48,7 +48,7 @@ jobs:
     needs: generate-primes
     steps:
       - name: Download primes file
-        uses: actions/download-artiface@v4
+        uses: actions/download-artifact@v4
         with:
           name: primes-output
       - name: Verify the generated primes
